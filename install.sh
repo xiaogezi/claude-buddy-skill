@@ -5,11 +5,11 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SKILL_DIR="$(dirname "$SCRIPT_DIR")"
+SKILL_SRC="$SCRIPT_DIR/skills/buddy"
 TARGET_DIR="$HOME/.claude/skills/buddy"
 
 echo "Installing Buddy Skill..."
-echo "Source: $SKILL_DIR"
+echo "Source: $SKILL_SRC"
 echo "Target: $TARGET_DIR"
 
 # Create parent directory if needed
@@ -22,7 +22,7 @@ if [ -e "$TARGET_DIR" ]; then
 fi
 
 # Create symbolic link
-ln -s "$SKILL_DIR" "$TARGET_DIR"
+ln -s "$SKILL_SRC" "$TARGET_DIR"
 
 echo "✓ Buddy Skill installed successfully"
 echo ""
