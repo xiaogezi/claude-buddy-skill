@@ -251,13 +251,13 @@ async function run(args) {
   const startedAt = new Date().toISOString();
 
   // Build CodeBuddy args
+  // Note: CodeBuddy does not have --cwd, it uses process working directory
   const buddyArgs = ['-p', '--output-format', 'json', '--permission-mode', 'auto'];
 
   if (model) {
     buddyArgs.push('--model', model);
   }
 
-  buddyArgs.push('--cwd', cwd);
   buddyArgs.push(task);
 
   return new Promise((resolve) => {
@@ -392,11 +392,12 @@ async function continueSession(args) {
   const startedAt = new Date().toISOString();
 
   // Build CodeBuddy args for continue
+  // Note: CodeBuddy uses -c/--continue for most recent, -r/--resume for session
+  // --resume can take a sessionId or interactively select
   const buddyArgs = ['-p', '--output-format', 'json', '--permission-mode', 'auto'];
-  buddyArgs.push('--continue', session);
+  buddyArgs.push('--resume', session);
 
   if (task) {
-    buddyArgs.push('--cwd', cwd);
     buddyArgs.push(task);
   }
 

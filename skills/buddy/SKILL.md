@@ -91,6 +91,24 @@ If no session ID available, returns:
 }
 ```
 
+## CodeBuddy CLI Parameters
+
+Buddy-runner translates its arguments to CodeBuddy CLI format:
+
+| Buddy-runner | CodeBuddy | Notes |
+|--------------|-----------|-------|
+| `--cwd <path>` | (process.cwd) | Sets spawn working directory, NOT passed to CLI |
+| `--task <prompt>` | `<prompt>` | Passed as last argument |
+| `--model <name>` | `--model <name>` | Direct passthrough |
+| `--session <id>` | `--resume <id>` | Resume existing session |
+| (implicit) | `-p` | Print mode (non-interactive) |
+| (implicit) | `--output-format json` | JSON output for parsing |
+| (implicit) | `--permission-mode auto` | Auto-approve permissions |
+
+**Unsupported CodeBuddy options:**
+- `--cwd`: CodeBuddy does not have this option; use process working directory
+- `--continue`: Use `--resume` for session continuation
+
 ## Binary Resolution Order
 
 1. `--binary` CLI argument
