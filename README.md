@@ -2,6 +2,8 @@
 
 A Claude Code Skill for delegating code execution tasks to CodeBuddy CLI.
 
+[中文说明](README_CN.md)
+
 ## Overview
 
 This skill enables Claude Code to delegate repository investigation, code modification, and test execution to CodeBuddy. Claude remains responsible for:
